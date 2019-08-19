@@ -1,0 +1,370 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Home.master.cs" Inherits="Home_MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   <title>瑞康屋KUHN RIKON官方網站 --瑞士國寶級鍋具，壓力鍋、休閒鍋、金典鍋</title>
+<meta name="description" content="瑞康屋是頂級鍋具的領導者，代理瑞士國寶級鍋具品牌KUHN RIKON。熱銷產品包括壓力鍋、HOTPAN休閒鍋、金典鍋、潔能板、易拉轉等。" />
+<meta name="keywords" content="瑞康屋,KUHN RIKON,瑞士,鍋具,鍋子,壓力鍋,快鍋,HOTPAN,休閒鍋,金典鍋,不沾鍋,煎鍋,湯鍋,炒鍋,調理鍋,不鏽鋼鍋,潔能板,節能板,易拉轉,煉雞精" />
+    <%--<link href="css/reset.css" rel="stylesheet" type="text/css" />--%>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-74121435-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+    <!-- Menu -->
+
+    <script type="text/javascript" src="menu/mbjsmbmcp.js"></script>
+
+    <link rel="stylesheet" href="menu/mbcsmbmcp.css" type="text/css" />
+
+    <script type="text/javascript">
+        function MM_swapImgRestore() { //v3.0
+            var i, x, a = document.MM_sr; for (i = 0; a && i < a.length && (x = a[i]) && x.oSrc; i++) x.src = x.oSrc;
+        }
+        function MM_preloadImages() { //v3.0
+            var d = document; if (d.images) {
+                if (!d.MM_p) d.MM_p = new Array();
+                var i, j = d.MM_p.length, a = MM_preloadImages.arguments; for (i = 0; i < a.length; i++)
+                    if (a[i].indexOf("#") != 0) { d.MM_p[j] = new Image; d.MM_p[j++].src = a[i]; }
+            }
+        }
+
+        function MM_findObj(n, d) { //v4.01
+            var p, i, x; if (!d) d = document; if ((p = n.indexOf("?")) > 0 && parent.frames.length) {
+                d = parent.frames[n.substring(p + 1)].document; n = n.substring(0, p);
+            }
+            if (!(x = d[n]) && d.all) x = d.all[n]; for (i = 0; !x && i < d.forms.length; i++) x = d.forms[i][n];
+            for (i = 0; !x && d.layers && i < d.layers.length; i++) x = MM_findObj(n, d.layers[i].document);
+            if (!x && d.getElementById) x = d.getElementById(n); return x;
+        }
+
+        function MM_swapImage() { //v3.0
+            var i, j = 0, x, a = MM_swapImage.arguments; document.MM_sr = new Array; for (i = 0; i < (a.length - 2); i += 3)
+                if ((x = MM_findObj(a[i])) != null) { document.MM_sr[j++] = x; if (!x.oSrc) x.oSrc = x.src; x.src = a[i + 2]; }
+        }
+    </script>
+
+    <!-- Menu FINISH-->
+    <!-- ad -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <script type="text/javascript" src="js/modernizr.custom.04022.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic'
+        rel='stylesheet' type='text/css'>
+    <!-- ad FINISH-->
+    <link rel="stylesheet" href="css/leftmenu.css">
+
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+    <script src="js/script.js"></script>
+
+    <script src="SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+
+    <link href="SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
+    <!-- knowledge -->
+    <style type="text/css">
+        .abgne_tip_gallery_block
+        {
+            margin: 0;
+            padding: 0;
+            width: 360px;
+            height: 193px;
+            overflow: hidden;
+            position: relative;
+        }
+        .abgne_tip_gallery_block img
+        {
+            position: absolute;
+            border: 0;
+        }
+        .abgne_tip_gallery_block .caption
+        {
+            position: absolute;
+            top: 157px; /* .abgne_tip_gallery_block 的高 - 想顯示 title 的高(這邊是設 55) */
+            width: 350px; /* .abgne_tip_gallery_block 的寬 - .caption 的左右 padding */
+            padding: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            line-height: 150%;
+            color: #b4b4b4;
+            background: url(images/2px_black.png) repeat;
+        }
+        .abgne_tip_gallery_block .caption1 a
+        {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            line-height: 180%;
+            text-decoration: none;
+        }
+        .abgne_tip_gallery_block .caption1 a:hover
+        {
+            font-size: 16px;
+            font-weight: bold;
+            color: #e6db7e;
+            line-height: 180%;
+            text-decoration: none;
+        }
+        .guidemenu08 {
+           float:left;
+           width:40px;
+           border-left:#b2b2b2 1px dotted;
+           text-align:center;
+           font-family:  Arial, Helvetica, sans-serif;
+           color:#595757;
+           font-size:12px;
+           line-height:150%;
+           text-decoration:none;
+                     }
+.guidemenu08 a {
+           font-family:  Arial, Helvetica, sans-serif;
+           color:#595757;
+           font-size:12px;
+           text-decoration:none;
+                     }
+.guidemenu08 a:hover {
+           font-family:  Arial, Helvetica, sans-serif;
+           color:#595757;
+           font-size:12px;
+           text-decoration: underline;
+}
+    </style>
+
+    <script type="text/javascript">
+        $(function() {
+            // 預設標題區塊 .abgne_tip_gallery_block .caption 的 top
+            var _titleHeight = 36;
+            $('.abgne_tip_gallery_block').each(function() {
+                // 先取得區塊的高及標題區塊等資料
+                var $this = $(this),
+				_height = $this.height(),
+				$caption = $('.caption', $this),
+				_captionHeight = $caption.outerHeight(true),
+				_speed = 200;
+
+                // 當滑鼠移動到區塊上時
+                $this.hover(function() {
+                    // 讓 $caption 往上移動
+                    $caption.stop().animate({
+                        top: _height - _captionHeight
+                    }, _speed);
+                }, function() {
+                    // 讓 $caption 移回原位
+                    $caption.stop().animate({
+                        top: _height - _titleHeight
+                    }, _speed);
+                });
+            });
+
+            
+        });
+
+//        document.oncontextmenu = function() { return false; }
+//        document.onselectstart = function() { return false; }
+////        //document.onmousedown = function() { return false; }
+
+    </script>
+
+    <!-- knowledge FINISH-->
+    <!-- lightbox-->
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+    <script>
+        !window.jQuery && document.write('<script src="jquery-1.4.3.min.js"><\/script>');
+    </script>
+
+    <!-- lightbox FINISH-->
+    <link href="css/css.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+    <link href="css/all.css" rel="stylesheet" type="text/css" />
+</head>
+<body onload="MM_preloadImages('menu/menu_but01d.png','menu/menu_but02d.png','menu/menu_but03d.png','menu/menu_but04d.png','menu/menu_but05d.png','menu/menu_but06d.png','menu/menu_but07d.png','menu/menu_but08d.png','menu/menu_but09d.png')">
+    <form id="form1" runat="server">
+    <!-- top -->
+    <!-- #BeginLibraryItem "/Library/menu.lbi" -->
+    <div class="top_all">
+        <div class="top_logo">
+            <a href="index.aspx" target="_top">
+                <img src="images/logo.png" width="102" height="98"></a></div>
+        <div class="top_menu1">
+            <div class="guidemenu">
+                <p class="guidemenu01">
+                    <asp:TextBox ID="txtSearch" runat="server" CssClass="guidemenu04"></asp:TextBox>
+                </p>
+                <p class="guidemenu011">
+                    <asp:Button ID="btnSearch" runat="server" CssClass="guidemenu05" OnClick="btnSearch_Click" />
+                </p>
+            </div>
+            <p class="guidemenu02"><a href="http://shop.rakenhouse.com/" target="_blank"><img src="images/app.jpg" width="96" height="23" border="0"></a></p>
+            <p class="guidemenu03" style="<%=logoutshow%>">
+            <%--<p class="guidemenu03" style="display:none;">--%>
+                <%=logout%><asp:Button ID="btnLogout" runat="server" Text="登出" OnClick="btnLogout_Click" />
+            </p>
+            <p class="guidemenu08"><a href="https://www.facebook.com/rakenhouse" target="_blank"><img src="images/fb.jpg" width="23" height="23" border="0"></a></p>
+			
+        </div>
+        <div class="top_menu2">
+            <!-- Menu -->
+            <ul id="mbmcpebul_table" class="mbmcpebul_menulist css_menu" style="width: 869px;
+                height: 52px;">
+                <li class="topitem spaced_li" style="width: 96px;">
+                    <div class=" buttonbg">
+                        <a href="about.aspx" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image2','','menu/menu_but01d.png',1)">
+                            <img src="menu/menu_but01.png" name="Image2" width="96" height="50" border="0" /></a></div>
+                    <ul class="gradient_menu gradient97">
+                        <li><a href="about.aspx" title="">認識瑞康屋</a></li>
+                        <li><a href="about1.aspx" title="">名人推薦</a></li>
+                        <li><a href="about2.aspx" title="">品牌故事</a></li>
+                        <li><a href="about3.aspx" title="">品質認證</a></li>
+                    </ul>
+                </li>
+                <li class="topitem spaced_li" style="width: 96px;">
+                    <div class=" buttonbg">
+                        <a href="news.aspx?t=1" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image3','','menu/menu_but02d.png',1)">
+                            <img src="menu/menu_but02.png" name="Image3" width="96" height="50" border="0" /></a></div>
+                    <ul class="gradient_menu gradient97">
+                        <li><a href="news.aspx?t=1" title="">活動訊息</a></li>
+                        <li><a href="news.aspx?t=2" title="">媒體/網友報導</a></li>
+                        <li><a href="news.aspx?t=3" title="">料理小知識</a></li>
+                    </ul>
+                </li>
+                <li class="topitem spaced_li" style="width: 96px;">
+                    <div class=" buttonbg">
+                        <a href="<%=prodPath%>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image6','','menu/menu_but03d.png',1)">
+                            <img src="menu/menu_but03.png" name="Image6" width="96" height="50" border="0" /></a></div>
+                    <ul class="gradient_menu gradient97">
+                        <asp:Repeater ID="rpProductMenu" runat="server">
+                            <HeaderTemplate>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <li><a href="product_index.aspx?b=<%#DataBinder.Eval(Container.DataItem, "Id")%>"
+                                    title="">
+                                    <%#DataBinder.Eval(Container.DataItem, "Name")%></a></li>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </ul>
+                </li>
+                <li class="topitem spaced_li" style="width: 96px;">
+                    <div class=" buttonbg">
+                        <a href="<%=recipePath%>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image7','','menu/menu_but04d.png',1)">
+                            <img src="menu/menu_but04.png" name="Image7" width="96" height="50" border="0" /></a></div>
+                    <ul class="gradient_menu gradient97">
+                        <asp:Repeater ID="rpRecipeMenu" runat="server">
+                            <HeaderTemplate>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <li><a href="recipe_index.aspx?t=1&d=<%#DataBinder.Eval(Container.DataItem, "Id")%>"
+                                    title="">
+                                    <%#DataBinder.Eval(Container.DataItem, "Name")%></a></li>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </ul>
+                </li>
+                <li class="topitem spaced_li" style="width: 112px;">
+                    <div class=" buttonbg">
+                        <a href="class_teacher.aspx" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','menu/menu_but05d.png',1)">
+                            <img src="menu/menu_but05.png" name="Image8" width="112" height="50" border="0" /></a></div>
+                    <ul class="gradient_menu gradient97">
+                        <li><a href="class_teacher.aspx" title="">師資介紹</a></li>
+                        <li><a href="<%=classPath1%>" title="">瑞康屋旗艦廚房</a></li>
+                        <li><a href="<%=classPath2%>" title="">小廚師冬/夏令營</a></li>
+                        <li><a href="<%=classPath3%>" title="">百貨料理廚房</a></li>
+                        <li><a href="<%=classPath4%>" title="">活動花絮</a></li>
+                    </ul>
+                </li>
+                <li class="topitem spaced_li" style="width: 96px;">
+                    <div class=" buttonbg">
+                        <a href="<%=classPath%>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','menu/menu_but06d.png',1)">
+                            <img src="menu/menu_but06.png" name="Image9" width="96" height="50" border="0" /></a></div>
+                    <ul class="gradient_menu gradient97">
+                        <asp:Repeater ID="rpClassMenu" runat="server">
+                            <HeaderTemplate>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <li><a href="class.aspx?t=<%#DataBinder.Eval(Container.DataItem, "ClassId")%>" title="">
+                                    <%#DataBinder.Eval(Container.DataItem, "ClassName")%></a></li>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </ul>
+                </li>
+                <li class="topitem spaced_li" style="width: 76px;">
+                    <div class=" buttonbg">
+                        <a href="service.aspx" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','menu/menu_but07d.png',1)">
+                            <img src="menu/menu_but07.png" name="Image10" width="76" height="50" border="0" /></a></div>
+                    <ul class="gradient_menu gradient97">
+                        <li><a href="service.aspx" title="">保固資訊</a></li>
+                        <li><a href="<%=path1%>" title="">保養/ 維修</a></li>
+                        <li><a href="<%=path2%>" title="">常見問與答</a></li>
+                        <li><a href="service3.aspx" title="">聯絡我們</a></li>
+                    </ul>
+                </li>
+                <li class="topitem spaced_li" style="width: 96px;">
+                    <div class=" buttonbg">
+                        <a href="<%=shopPath%>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','menu/menu_but08d.png',1)">
+                            <img src="menu/menu_but08.png" name="Image11" width="96" height="50" border="0" /></a></div>
+                    <ul class="gradient_menu gradient97">
+                        <asp:Repeater ID="rpShopMenu" runat="server">
+                            <HeaderTemplate>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <li><a href="shop.aspx?t=<%#DataBinder.Eval(Container.DataItem, "Type")%>" title="">
+                                    <%#DataBinder.Eval(Container.DataItem, "AreaName")%></a></li>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </ul>
+                </li>
+                <li class="topitem spaced_li" style="width: 96px;">
+                    <div class=" buttonbg">
+                        <a href="login.aspx" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','menu/menu_but09d.png',1)">
+                            <img src="menu/menu_but09.png" name="Image12" width="96" height="50" border="0" /></a></div>
+                    <ul class="gradient_menu gradient97">
+                        <li><a href="login.aspx" title="">會員登入</a></li>
+                        <li><a href="join.aspx" title="">加入會員</a></li>
+                        <li><a href="pass.aspx" title="">忘記密碼</a></li>
+                        <li><a href="reissue.aspx" title="">補發認證信</a></li>
+                        <li><asp:LinkButton id="LinkButton1" Text="最新消息" runat="server" OnClick="LinkButton_Click" /></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Menu FINISH-->
+        </div>
+        <div style="clear: both;">
+        </div>
+    </div>
+    <!-- #EndLibraryItem -->
+    <!-- top FINISH-->
+    <asp:ContentPlaceHolder ID="main" runat="server">
+    </asp:ContentPlaceHolder>
+    <!-- copyright -->
+    <!-- #BeginLibraryItem "/Library/copyright.lbi" -->
+    <div class="copyright_all">
+        瑞康國際企業股份有限公司 地址:台北市士林區社中街434號 TEL:02-2810-8580 / 0800-39-3399 FAX:02-8811-2518<br>
+        營業時間:週一~週五 AM9:00-12:00 PM1:30-6:00 
+                <a href="service3.aspx">聯絡我們</a>
+    </div>
+    <!-- #EndLibraryItem -->
+    <!-- copyright FINISH-->
+    </form>
+</body>
+</html>

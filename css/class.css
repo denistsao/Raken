@@ -1,0 +1,140 @@
+@charset "UTF-8";
+/* VARIABLES */
+/* GENERAL */
+body {
+  font-family: "Montserrat",'Microsoft JhengHei', "Arial", sans-serif;
+  font-size: 1rem;
+  color: #777777; }
+
+.classTitle {
+  text-align: center;
+  font-size: 2em;
+  color: #d43030;
+  font-weight: bold; }
+
+.calAll-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+.calendar-container {
+  -webkit-box-ordinal-group: 1;
+  -ms-flex-order: 0;
+  order: 0;
+  background: #ffffff;
+  padding: 1rem; }
+
+.single-day-container {
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 1;
+  order: 1;
+  background: #d43030;
+  padding: 1rem; }
+
+.calendar .header {
+  line-height: 3rem;
+  vertical-align: middle; }
+  .calendar .header .col-center {
+    text-align: center;
+    color: #d43030;
+    font-weight: bold;
+    font-size: 1.3rem; }
+  .calendar .header .col-end {
+    text-align: right; }
+  .calendar .header .icon {
+    cursor: pointer;
+    -webkit-transition: all .5s;
+    transition: all .5s; }
+    .calendar .header .icon:hover {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1); }
+
+.calendar .days {
+  /* 星期 */
+  color: #d43030;
+  text-align: center;
+  padding-bottom: .5rem; }
+
+.calendar .body .row {
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap; }
+
+.calendar .body .cell {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  cursor: pointer;
+  margin: .5rem 0; }
+  .calendar .body .cell .day-number {
+    /* 日期 文字 */
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem; }
+
+.calendar .body .has-events {
+  /* 有事件的日期 */ }
+  .calendar .body .has-events div {
+    position: relative; }
+    .calendar .body .has-events div .day-number:before {
+      content: '';
+      width: 15px;
+      height: 15px;
+      color: #d43030;
+      background: #d43030;
+      position: absolute;
+      top: -.5rem;
+      right: -.5rem;
+      border-radius: 50%;
+      border: 3px solid #fff; }
+
+.calendar .body .disabled {
+  /* 非當月的日期 */
+  color: #cccccc; }
+
+.calendar .body .selected {
+  /* 選擇及當日 */ }
+  .calendar .body .selected .day-number {
+    color: #ffffff;
+    background: #d43030;
+    border-radius: 5px; }
+
+.event-list {
+  list-style: none;
+  padding-left: 0; }
+
+.single-day-container {
+  color: #ffffff; }
+  .single-day-container .day-info {
+    /* 事項日期 */
+    border-bottom: 1px solid #fff;
+    margin-bottom: 1.5rem; }
+    .single-day-container .day-info > div {
+      display: inline-block; }
+    .single-day-container .day-info .day-number {
+      font-size: 2rem; }
+    .single-day-container .day-info .day-name {
+      padding-left: 1rem; }
+
+.event-details {
+  border-bottom: 1px dashed;
+  margin-bottom: .5rem;
+  padding-bottom: .5rem; }
+  .event-details > div {
+    padding-left: 1rem; }
+  .event-details .detailsPlace {
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding-left: 0; }
+  .event-details .clist {
+    padding-left: 1.5rem; }

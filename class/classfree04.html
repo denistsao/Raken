@@ -1,0 +1,294 @@
+<head>
+  <link rel="stylesheet" href="./css/class.css">
+</head>
+<body>
+	<!-- 圖片置中-->
+	<div class="text-center">
+			<img src="./images/teachers/class.jpg" class="rounded img-fluid" alt="Responsive image">
+	</div>
+	<!-- 圖片置中-->
+	<!--表格-->
+	<!--表格-->
+	
+	<div class="classTitle">南區</div>
+  <div id="app">
+    <Calendar />
+	</div>
+  <template id="calendar-template">
+      <div class="calAll-container">
+      <div class="single-day-container">
+        <div class="day-container">
+          <div class="day-info">
+            <div class="day-month">{{ selectedDay.month }}/</div>
+            <div class="day-number">{{ selectedDay.number }}</div>
+            <div class="day-name">{{ selectedDay.name }}</div>
+          </div>
+          <div class="day-data">
+          </div>
+        </div>
+        <div class="event-container">
+          <ul class="event-list">
+            <li class="event-list-item" :class="{ 'active': dayEvent.isActive }" v-for="(dayEvent, index) in dayEvents" :key="`dayEvent-${index}`">
+              <!-- <div class="event-dates">
+                <span>{{ dayEvent.startDate | getTime }}</span>
+                <span>{{ dayEvent.endDate | getTime }}</span>
+              </div> -->
+              <div class="event-details">
+                <div class="detailsPlace">{{dayEvent.place}}</span></div>
+                <div class="detailsTel">電話：<span>{{dayEvent.tel}}</span></div>
+								<div class="detailsTeacher">老師：<span>{{dayEvent.teacher}}</span></div>
+								<div class="detailsactivityTime" v-if="dayEvent.activityTime">時間：{{dayEvent.activityTime}}</div>
+                <div class="detailstheme">主題：<span>{{dayEvent.theme}}</span></div>
+								<div>時間/菜單：</div>
+								<div v-for="cooklist in dayEvent.cooklists" class="clist">
+									<div v-html="cooklist"></div>
+								</div>
+								<div class="cookNote" v-if="dayEvent.cooknote"  v-html="'備註：'+dayEvent.cooknote"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="calendar-container">
+        <div class="calendar">
+          <div class="header row flex-middle">
+            <div class="col col-start">
+              <div class="icon" @click="prevMonth">
+                上個月
+              </div>
+            </div>
+            <div class="col col-center">
+              <transition tag="div" :name="typeTransition">
+                <div :key="month" class="month-name">{{ month }}</div>
+              </transition>
+            </div>
+            <div class="col col-end" @click="nextMonth">
+              <div class="icon">下個月</div>
+            </div>
+          </div>
+          <div class="days row">
+            <div class="col col-center" v-for="(day, index) in dayNames" :key="`h-${index}`">
+              <div class="day-name">{{ day }}</div>
+            </div>
+          </div>
+          <div class="body">
+            <div class="row" v-for="(row, index) in rows" :key="`r-${index}`">
+              <div class="col cell" :class="[{'has-events': day.hasEvents}, day.type]" v-for="(day, index) in row.days" :key="`d-${index}`" @click="updateDate(day)">
+                <transition-group tag="div" :name="typeTransition">
+                  <div :key="day.formattedDate" class="day-number">{{ day.formattedDate }}</div>
+                </transition-group>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+  <script src="./date_fns.js"></script> -->
+  <script>
+    Vue.component("Calendar", {
+	template: "#calendar-template",
+	name: "Calendar",
+	data() {
+		return {
+			currentMonth: new Date(),
+			selectedDate: new Date(),
+			events: [
+				{
+					startDate: "11/13/2018",
+					endDate: "11/13/2018",
+					allDay: false,
+					place: "高雄新光三越左營店9樓-Family Kitchen區",
+					tel:"07-345-4486",
+					teacher:"川子",
+					theme:"五星主廚出菜",
+					activityTime:"14:30-16:30",
+					cooklists: ["霸王別雞、甜葱悶鮭、海霸王煎餅"],
+					cooknote:""
+				},
+				{
+					startDate: "11/16/2018",
+					endDate: "11/16/2018",
+					allDay: false,
+					place: "高雄新光三越左營店9樓-Family Kitchen",
+					tel:"07-345-4486",
+					teacher:"米可白+微微蔡",
+					theme:"魔法美食人妻料理",
+					activityTime:"14:30-16:30",
+					cooklists: ["神秘菜色 活動當天現場公布"],
+					cooknote:"名人名廚"
+				},
+				{
+					startDate: "11/17/2018",
+					endDate: "11/17/2018",
+					allDay: false,
+					place: "高雄統一時代百貨5樓—櫃上",
+					tel:"07-823-1716",
+					teacher:"小黑",
+					theme:"有省錢常備菜",
+					activityTime:"14:30-16:30",
+					cooklists: ["昆布秋刀魚、韓式秋刀魚捲、雞肉義大利麵、秋葵梅花豬"],
+					cooknote:false
+				},
+				{
+					startDate: "11/18/2018",
+					endDate: "11/18/2018",
+					allDay: false,
+					place: "台南新光三越新天地本館B1F A區－櫃上",
+					tel:"06-303-0393",
+					teacher:"CC",
+					theme:"用好鍋阿翔師歡喜上菜",
+					activityTime:"14:30-16:30",
+					cooklists: ["1紅鞠養生排骨、金沙時蔬蝦球、翠綠瓜仔肉封"],
+					cooknote:false
+				}
+			],
+			transitionDirection: "",
+			currentPage: {
+				month: dateFns.getMonth(new Date()),
+				year: dateFns.getYear(new Date())
+			}
+		};
+	},
+	watch: {
+    currentPage(val, oldVal) {
+      this.transitionDirection = this.getTransitionDirection(oldVal, val);
+    }
+  },
+	methods: {
+		nextMonth() {
+      this.currentMonth = dateFns.addMonths(this.currentMonth, 1);
+      this.updateCurrentPage(this.currentMonth);
+    },
+
+    prevMonth() {
+      this.currentMonth = dateFns.subMonths(this.currentMonth, 1);
+      this.updateCurrentPage(this.currentMonth);
+    },
+
+    updateDate(day) {
+      this.selectedDate = day.day;
+    },
+
+    updateCurrentPage(date) {
+      this.currentPage = {
+        month: dateFns.getMonth(date),
+        year: dateFns.getYear(date)
+      };
+    },
+
+		findEvents(day, sort = false) {
+			let hasEvents = this.events.reduce((list, ev) => {
+				if (dateFns.isSameDay(day, new Date(ev.startDate))) {
+					ev.isActive =
+						ev.allDay ||
+						dateFns.isWithinRange(
+							new Date(),
+							new Date(ev.startDate),
+							new Date(ev.endDate)
+						);
+					list.push(ev);
+				}
+				return list;
+			}, []);
+			if (sort) {
+				hasEvents.sort((a, b) => {
+					const dateA = new Date(a.startDate);
+					const dateB = new Date(b.startDate);
+					return dateFns.compareAsc(dateA, dateB);
+				});
+			}
+			return hasEvents;
+		},
+
+		getTransitionDirection(fromPage, toPage) {
+			if (!fromPage || !toPage) return "";
+			if (fromPage.year !== toPage.year)
+				return fromPage.year < toPage.year ? "next" : "prev";
+			if (fromPage.month !== toPage.month)
+				return fromPage.month < toPage.month ? "next" : "prev";
+			return "";
+		}
+	},
+	computed: {
+		selectedDay() {
+			return {
+				number: dateFns.format(this.selectedDate, "D"),
+				name: dateFns.format(this.selectedDate, "dddd"),
+				month: dateFns.format(this.selectedDate, "M"),
+			};
+		},
+
+		month() {
+			const dateFormat = "YYYY/MM";
+			return dateFns.format(this.currentMonth, dateFormat);
+		},
+
+		dayNames() {
+			const dateFormat = "ddd";
+			let startDate = dateFns.startOfISOWeek(this.currentMonth);
+
+			const days = [];
+			for (let i = 0; i < 7; i += 1) {
+				days.push(dateFns.format(dateFns.addDays(startDate, i), dateFormat));
+			}
+			return days;
+		},
+
+		rows() {
+			const monthStart = dateFns.startOfMonth(this.currentMonth);
+			const monthEnd = dateFns.endOfMonth(monthStart);
+			const startDate = dateFns.startOfISOWeek(monthStart);
+			const endDate = dateFns.endOfISOWeek(monthEnd);
+
+			const dateFormat = "D";
+			const rows = [];
+
+			let days = [];
+			let day = startDate;
+			let formattedDate = "";
+
+			while (day <= endDate) {
+				for (let i = 0; i < 7; i += 1) {
+					formattedDate = dateFns.format(day, dateFormat);
+					const dayInfo = {
+						day,
+						formattedDate,
+						type: !dateFns.isSameMonth(day, monthStart)
+							? "disabled"
+							: dateFns.isSameDay(day, this.selectedDate) ? "selected" : "",
+						hasEvents: this.findEvents(day).length > 0
+					};
+					days.push(dayInfo);
+					day = dateFns.addDays(day, 1);
+				}
+				rows.push({ days: days });
+				days = [];
+			}
+			return rows;
+		},		
+		dayEvents() {
+      return this.findEvents(this.selectedDate, true);
+    },
+
+    typeTransition() {
+      return `${
+        this.transitionDirection === "next" ? "slide-left" : "slide-right"
+      }`;
+    }
+	},
+	filters: {
+		getTime(value) {
+			const dateFormat = "h:mm A";
+			return dateFns.format(value, dateFormat);
+		}
+	}
+});
+new Vue({
+	el: "#app"
+});
+
+  </script>
+</body>
+</html>
